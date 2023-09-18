@@ -1,4 +1,3 @@
-
 import com.android.build.gradle.BaseExtension
 
 
@@ -9,6 +8,7 @@ configure<BaseExtension> {
         targetSdk = 34
     }
 }
+
 
 
 

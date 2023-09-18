@@ -1,8 +1,7 @@
 plugins{
+    id("android-library-convention")
     id("kotlin-kapt")
-    id("com.android.library")
     id("org.jetbrains.kotlin.plugin.serialization")
-    id("multiplatform-library-convention")
     id("dagger.hilt.android.plugin")
 
 

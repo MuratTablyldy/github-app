@@ -11,5 +11,7 @@
     <color name="green">#E05A9357</color>
     <color name="red">#FF1744</color>
     <color name="toolbar_color">#161B22</color>
+    <color name="background_alert_dialog">#A40D1117</color>
+    <color name="divider_color">#21262D</color>
 
 </resources>

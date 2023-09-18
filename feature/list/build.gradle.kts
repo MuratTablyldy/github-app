@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id("multiplatform-library-convention")
+    id("android-library-convention")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }

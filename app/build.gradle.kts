@@ -1,6 +1,6 @@
 plugins {
     id("kotlin-kapt")
-    id ("org.jetbrains.kotlin.android")
+   // id ("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("android-app-convention")
 }
