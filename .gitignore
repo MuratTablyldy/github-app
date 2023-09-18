@@ -10,3 +10,9 @@
 local.properties
 /build-logic/build/
 /build-logic/.idea
+/build-logic/.gradle/
+/feature/config/.gradle/
+/feature/list/.gradle/
+/feature/list/build/
+/core-github/.gradle/
+/core-github/build/
