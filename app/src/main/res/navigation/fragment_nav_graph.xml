@@ -18,6 +18,7 @@
         <argument
             android:name="owner"
             app:argType="string" />
-        <deepLink app:uri="app://github.app/details/{repo_name}/{owner}"/>
+        <argument android:name="id" app:argType="long"/>
+        <deepLink app:uri="app://github.app/details/{repo_name}/{owner}/{id}"/>
     </fragment>
 </navigation>

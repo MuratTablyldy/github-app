@@ -52,7 +52,7 @@ class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
     override fun onResume() {
         super.onResume()
         val navigationListener =
-            NavController.OnDestinationChangedListener { controller, destination, arguments ->
+            NavController.OnDestinationChangedListener { _, destination, arguments ->
                 when(destination.id){
                     R.id.list_repositories_fragment->{
                         binding.toolbar.navigationIcon = null

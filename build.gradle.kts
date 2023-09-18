@@ -10,7 +10,6 @@ buildscript {
         classpath(libs.hiltGradle)
         classpath(":build-logic")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
-        classpath("dev.icerock.moko:resources-generator:0.23.0")
     }
 }
 

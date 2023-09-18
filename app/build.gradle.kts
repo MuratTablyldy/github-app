@@ -17,11 +17,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:config"))
+    implementation(project(":feature:list"))
+    implementation(project(":feature:detail"))
+    implementation(project(":core-github"))
     implementation(libs.appCompat)
     implementation(libs.material)
     implementation(libs.recyclerView)
-    implementation(libs.swipeRefreshLayout)
-    implementation(libs.mokoMvvmDataBinding)
     implementation(libs.navigation)
     implementation(libs.navigationUI)
     implementation (libs.lifecycleViewModel)
@@ -31,13 +33,9 @@ dependencies {
     implementation(libs.multiplatformSettings)
     implementation(libs.okHttpInteceptor)
     implementation (libs.hilt)
-    implementation(project(":mpp-library:core-github"))
     kapt (libs.hiltCompiler)
     implementation(libs.tiker)
     implementation(libs.mdTool)
-    implementation(project(":mpp-library:feature:config"))
-    implementation(project(":mpp-library:feature:list"))
-    implementation(project(":mpp-library:feature:detail"))
     implementation(libs.splashScreen)
 }
 

@@ -1,5 +1,3 @@
-include(":mpp-library:domain:core-github-api")
-
 dependencyResolutionManagement {
     repositories {
         google()
@@ -9,11 +7,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "github-app"
 includeBuild("build-logic")
-include(":mpp-library")
-include(":mpp-library:feature:config")
-include(":mpp-library:feature:list")
-include(":mpp-library:core-github")
-include(":mpp-library:feature:detail")
+
+include(":feature:config")
+include(":feature:list")
+include(":core-github")
+include(":feature:detail")
 include(":app")
 
 
