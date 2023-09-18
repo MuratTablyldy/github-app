@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+              <com.google.android.material.appbar.CollapsingToolbarLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+                  >
+                      <androidx.constraintlayout.widget.ConstraintLayout
+                          android:id="@+id/state_view"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          app:layout_collapseMode="pin"
+                          android:background="@color/background">
+                              <ImageView
+                                  android:id="@+id/url_icon"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="5dp"
+                                  android:src="@drawable/ic_baseline_link_24"
+                                  app:layout_constraintBottom_toBottomOf="@id/link"
+                                  app:layout_constraintEnd_toStartOf="@id/link"
+                                  app:layout_constraintStart_toStartOf="parent"
+                                  app:layout_constraintTop_toTopOf="@id/link"
+                                  app:tint="@color/header_row_color" />
+
+                              <TextView
+                                  android:id="@+id/link"
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginTop="20dp"
+                                  android:layout_marginBottom="20dp"
+                                  android:textColor="@color/header_row_color"
+                                  app:layout_constraintEnd_toEndOf="parent"
+                                  app:layout_constraintStart_toEndOf="@id/url_icon"
+                                  app:layout_constraintTop_toTopOf="parent"
+                                  tools:text="https://github.com/icerockdev/moko-resources" />
+
+                              <ImageView
+                                  android:id="@+id/license_logo"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="5dp"
+                                  android:src="@drawable/ic_license"
+                                  app:layout_constraintStart_toStartOf="parent"
+                                  app:layout_constraintTop_toBottomOf="@id/link"
+                                  app:tint="@color/white" />
+
+                              <TextView
+                                  android:id="@+id/license_text"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="4dp"
+                                  android:text="@string/license"
+                                  android:textColor="@color/white"
+                                  android:textSize="16sp"
+                                  app:layout_constraintBottom_toBottomOf="@id/license_logo"
+                                  app:layout_constraintStart_toEndOf="@id/license_logo"
+                                  app:layout_constraintTop_toTopOf="@id/license_logo" />
+
+                              <TextView
+                                  android:id="@+id/license"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="10dp"
+                                  android:textColor="@color/white"
+                                  android:textSize="16sp"
+                                  app:layout_constraintBottom_toBottomOf="@id/license_text"
+                                  app:layout_constraintEnd_toEndOf="parent"
+                                  app:layout_constraintTop_toTopOf="@id/license_logo"
+                                  tools:text="Apache 2.0" />
+
+                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                                  android:id="@+id/stars_id"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="10dp"
+                                  app:description="@string/stars_title"
+                                  app:layout_constraintEnd_toStartOf="@id/forks"
+                                  app:layout_constraintStart_toStartOf="parent"
+                                  app:layout_constraintTop_toBottomOf="@id/license_text"
+                                  app:logo="@drawable/ic_baseline_star_24"
+                                  app:logoColor="@color/yellow" />
+
+                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                                  android:id="@+id/forks"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="10dp"
+                                  app:description="@string/forks_title"
+                                  app:layout_constraintEnd_toStartOf="@id/watches"
+                                  app:layout_constraintStart_toEndOf="@id/stars_id"
+                                  app:layout_constraintTop_toBottomOf="@id/license_text"
+                                  app:logo="@drawable/ic_forks"
+                                  app:logoColor="@color/forks_color" />
+
+                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                                  android:id="@+id/watches"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="10dp"
+                                  app:layout_constraintEnd_toEndOf="parent"
+                                  app:layout_constraintStart_toEndOf="@id/forks"
+                                  app:layout_constraintTop_toBottomOf="@id/license_text"
+                                  app:logo="@drawable/ic_views"
+                                  app:logoColor="@color/light_blue" />
+                      </androidx.constraintlayout.widget.ConstraintLayout>
+              </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                        <WebView
+                            android:id="@+id/readme_holder"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <include
+                            android:id="@+id/readme_empty"
+                            layout="@layout/readme_empty_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <include
+                            android:id="@+id/readme_loading"
+                            layout="@layout/readme_loading_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <include
+                            android:id="@+id/readme_error"
+                            layout="@layout/readme_error_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <include
+            android:id="@+id/loading_view"
+            layout="@layout/detail_loading_layout"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/error_view"
+            layout="@layout/detail_error_layout"
+            android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

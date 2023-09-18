@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph">
+    <action
+        android:id="@+id/action_global_signFlowFragment"
+        app:destination="@id/signFlowFragment"
+        app:popUpTo="@id/main_nav_graph" />
+
+    <action
+        android:id="@+id/action_global_mainFlowFragment"
+        app:destination="@id/mainFlowFragment"
+        app:popUpTo="@id/main_nav_graph" />
+
+    <fragment
+        android:id="@+id/mainFlowFragment"
+        android:name="kz.tabyldy.githubapp.navigationfragment.NavigationFragment"
+        android:label="flow_fragment_main"
+        tools:layout="@layout/nav_fragment_layout">
+        <deepLink app:uri="app://gitHub.app/main_graph"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signFlowFragment"
+        android:name="kz.tabyldy.library.feature.config.login.LoginFragment"
+        android:label="flow_fragment_sign"
+        tools:layout="@layout/login_layout"/>
+</navigation>

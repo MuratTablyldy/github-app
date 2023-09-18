@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#F1EBEB</color>
+    <color name="red">#FF1744</color>
+    <color name="green">#E05A9357</color>
+    <color name="toolbar_color">#161B22</color>
+    <color name="background">#0D1117</color>
+    <color name="other_color">#3F41F4</color>
+    <color name="light_blue">#9CFFF9</color>
+    <color name="forks_color">#6ED370</color>
+    <color name="yellow">#FFEA00</color>
+    <color name="header_row_color">#58A6FF</color>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unknown_error">Unknown error</string>
+    <string name="no_description">No description</string>
+    <string name="invalid_language_s">Language must be one of (%s)</string>
+    <string name="invalid_token">Token can\'t be empty</string>
+    <string name="token_is_invalid">invalid token</string>
+    <string name="retry">retry</string>
+    <string name="empty_error">"Please fill in this field"</string>
+    <string name="invalid_characters">"invalid characters"</string>
+    <string name="access_token_hint">Personal access token</string>
+    <string name="sign_in_button_text">Sign In</string>
+    <string name="positive_button_text">OK</string>
+    <string name="error_title">Error</string>
+</resources>

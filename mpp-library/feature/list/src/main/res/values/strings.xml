@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="access_error">Opps,your access token has limited permission</string>
+    <string name="something_went_wrong">Something went wrong!</string>
+    <string name="check_the_internet_error">Check your internet connection</string>
+    <string name="refresh">refresh</string>
+    <string name="empty_header">Empty</string>
+    <string name="no_repositories_at_the_moment">No repositories at the moment</string>
+    <string name="error_title">Error</string>
+    <string name="token_is_invalid">invalid token</string>
+</resources>

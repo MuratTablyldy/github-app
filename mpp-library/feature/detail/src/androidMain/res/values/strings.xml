@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="check_the_internet_error">Check your internet connection</string>
+    <string name="forbiden">No access to this repository</string>
+    <string name="token_error">"token is invalid"</string>
+    <string name="no_redme">No README.md</string>
+    <string name="connection_error">Connection error</string>
+    <string name="check_your_internet_connection">Check your Internet connection</string>
+    <string name="retry">retry</string>
+    <string name="license">License</string>
+    <string name="stars_title">stars</string>
+    <string name="forks_title">forks</string>
+    <string name="refresh">refresh</string>
+    <string name="error_message">Something went wrong!</string>
+    <string name="error_title">Error</string>
+</resources>
