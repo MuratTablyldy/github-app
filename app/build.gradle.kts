@@ -1,6 +1,5 @@
 plugins {
     id("kotlin-kapt")
-   // id ("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("android-app-convention")
 }
@@ -21,22 +20,10 @@ dependencies {
     implementation(project(":feature:list"))
     implementation(project(":feature:detail"))
     implementation(project(":core-github"))
-    implementation(libs.appCompat)
-    implementation(libs.material)
-    implementation(libs.recyclerView)
-    implementation(libs.navigation)
-    implementation(libs.navigationUI)
-    implementation (libs.lifecycleViewModel)
     implementation(libs.splashScreen)
-    implementation(libs.retrofit)
-    implementation(libs.kotlinSerialization)
-    implementation(libs.multiplatformSettings)
-    implementation(libs.okHttpInteceptor)
     implementation (libs.hilt)
     kapt (libs.hiltCompiler)
-    implementation(libs.tiker)
-    implementation(libs.mdTool)
-    implementation(libs.splashScreen)
+
 }
 
 

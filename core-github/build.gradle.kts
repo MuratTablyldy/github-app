@@ -8,19 +8,24 @@ plugins{
 }
 android{
     namespace = "kz.tabyldy.core"
-    buildFeatures.viewBinding = true
 }
 dependencies {
-    implementation(libs.coroutines)
-    implementation(libs.retrofit)
-    implementation(libs.kotlinSerialization)
-    implementation(libs.multiplatformSettings)
-    implementation(libs.okHttpInteceptor)
-    implementation (libs.hilt)
+    api(libs.coroutines)
+    api(libs.retrofit)
+    api(libs.kotlinSerialization)
+    api(libs.multiplatformSettings)
+    api(libs.okHttpInteceptor)
+    api (libs.hilt)
     kapt (libs.hiltCompiler)
     kapt(libs.metadata)
-    implementation(libs.mdTool)
-    implementation(libs.lifecycleViewModel)
+    api(libs.mdTool)
+    api(libs.lifecycleViewModel)
+    api(libs.navigation)
+    api(libs.navigationUI)
+    api(libs.appCompat)
+    api(libs.material)
+    api(libs.corektx)
+    api(libs.fragment)
 }
 kapt {
     correctErrorTypes = true

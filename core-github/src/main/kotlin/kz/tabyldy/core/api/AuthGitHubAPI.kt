@@ -19,11 +19,15 @@ interface AuthGitHubAPI {
     ): List<Repo>
 
     @GET("/repositories/{id}/contents/README.md")
-    suspend fun getReadme(@Path("id") id: Long): MDRes
+    suspend fun getReadme(
+        @Path("id")
+        id: Long
+    ): MDRes
 
     @GET("/repos/{owner}/{repo}")
     suspend fun getRepoDetails(
         @Path("owner") owner: String,
         @Path("repo") repo: String
     ): RepoDetail
+
 }

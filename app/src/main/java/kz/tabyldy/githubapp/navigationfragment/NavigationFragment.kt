@@ -1,14 +1,18 @@
 package kz.tabyldy.githubapp.navigationfragment
 
+import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat.AnimationCallback
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kz.tabyldy.core.storage.KeyValueStorage
@@ -45,10 +49,6 @@ class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onResume() {
         super.onResume()
         val navigationListener =
@@ -70,15 +70,11 @@ class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
     private fun animateItem(itemMenu: Int) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-
             val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawable
             icon.start()
-
         } else {
-
             val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawableCompat
             icon.start()
-
         }
 
     }

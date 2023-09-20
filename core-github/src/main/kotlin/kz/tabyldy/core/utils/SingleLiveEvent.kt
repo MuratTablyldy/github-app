@@ -8,10 +8,12 @@ import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SingleLiveEvent<T> : MutableLiveData<T> {
-    constructor(t: T) : super(t)
-    constructor() : super()
 
     private val mPending = AtomicBoolean(false)
+
+    constructor(t: T) : super(t)
+
+    constructor() : super()
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
@@ -39,4 +41,5 @@ class SingleLiveEvent<T> : MutableLiveData<T> {
     companion object {
         private const val TAG = "SingleLiveEvent"
     }
+
 }

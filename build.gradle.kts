@@ -9,7 +9,8 @@ buildscript {
         classpath(libs.kotlinSerializationGradle)
         classpath(libs.hiltGradle)
         classpath(":build-logic")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
+        classpath(libs.kotlinGradlePlugin)
+
     }
 }
 

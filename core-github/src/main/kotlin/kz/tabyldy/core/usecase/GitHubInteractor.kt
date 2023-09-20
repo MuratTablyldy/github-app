@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 class GitHubInteractor @Inject constructor(private val repository: AppRepository):
     GitHubUseCase {
+
     override suspend fun <T : Any> invoke(
         dispatcher: CoroutineDispatcher,
         apiCall: suspend () -> T
@@ -50,4 +51,5 @@ class GitHubInteractor @Inject constructor(private val repository: AppRepository
     override fun isValid(): Boolean? {
         return repository.isValid
     }
+
 }

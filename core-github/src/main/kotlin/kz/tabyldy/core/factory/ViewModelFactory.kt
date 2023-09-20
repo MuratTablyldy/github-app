@@ -16,4 +16,5 @@ class ViewModelFactory @Inject constructor(
         }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
         return creator.get() as T
     }
+
 }

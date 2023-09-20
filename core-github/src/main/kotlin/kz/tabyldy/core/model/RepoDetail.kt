@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RepoDetail(
-
     @SerialName("id")
     val id: Long,
 

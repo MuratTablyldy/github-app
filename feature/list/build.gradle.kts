@@ -15,23 +15,9 @@ android{
 
 dependencies {
     implementation(project(":core-github"))
-    implementation(libs.coroutines)
-    implementation(libs.appCompat)
-    implementation(libs.material)
-    implementation(libs.lifecycleViewModel)
     implementation(libs.recyclerView)
-    implementation(libs.mokoMvvmLiveData)
-    implementation(libs.mokoMvvmState)
-    implementation(libs.coreKtx)
-    implementation(libs.fragment)
-    implementation(libs.recyclerView)
-    implementation(libs.retrofit)
-    implementation(libs.korlinSerialization)
-    implementation(libs.okHttpInteceptor)
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
     kapt(libs.metadata)
-    implementation(libs.navigation)
-    implementation(libs.navigationUI)
 }
 

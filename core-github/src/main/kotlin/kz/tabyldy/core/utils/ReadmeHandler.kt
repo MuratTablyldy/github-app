@@ -84,7 +84,8 @@ object ReadmeHandler {
                         + "back {background-color:rgb(26, 30, 36); border-radius:5%;}"
                         + "a {color:$linkColor;}"
                         + "pre {background-color:rgb(26, 30, 36);}\n"
-                        + "</style>\n</head>\n<body>\n"
+                        + "</style>" +
+                        "\n</head>\n<body>\n"
             )
 
             builder.append(html)

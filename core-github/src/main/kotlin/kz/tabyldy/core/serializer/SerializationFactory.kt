@@ -36,10 +36,6 @@ class SerializationFactory(
 
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@JvmName("create")
-fun StringFormat.asConverterFactory(contentType: MediaType): Factory {
-    return SerializationFactory(contentType, Serializer.FromString(this))
-}
+
 
 

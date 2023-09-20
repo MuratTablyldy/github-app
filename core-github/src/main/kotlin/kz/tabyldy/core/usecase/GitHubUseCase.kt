@@ -11,7 +11,9 @@ interface GitHubUseCase {
     ): Result<T>
 
     suspend fun checkToken(): Result<Unit>
+
     suspend fun getRepos(): Result<List<Repo>>
+
     suspend fun getRepositoryReadme(
         id: Long
     ): Result<String>
@@ -22,9 +24,11 @@ interface GitHubUseCase {
     ): Result<RepoDetail>
 
     fun getApiToken():String?
+
     fun setApiTToken(value:String?)
 
     fun setValid(valid: Boolean?)
+
     fun isValid():Boolean?
 
 }

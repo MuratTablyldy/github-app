@@ -1,12 +1,12 @@
 package kz.tabyldy.core.interceptors
 
+import kz.tabyldy.core.R
 import okhttp3.Interceptor
 import okhttp3.Response
 import kz.tabyldy.core.storage.KeyValueStorage
 
 
 class KeyInterceptor constructor(private val keyValueStorage: KeyValueStorage) : Interceptor {
-
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val token = "$TYPE ${keyValueStorage.accessToken}"
@@ -15,7 +15,6 @@ class KeyInterceptor constructor(private val keyValueStorage: KeyValueStorage) :
             .addHeader(ACCEPT_HEADER_NAME, ACCEPT_TYPE)
             .addHeader(AUTHORIZATION_HEADER, token)
             .build()
-
         return chain.proceed(request)
     }
 
@@ -32,4 +31,5 @@ class KeyInterceptor constructor(private val keyValueStorage: KeyValueStorage) :
 
         const val TYPE = "Bearer"
     }
+
 }

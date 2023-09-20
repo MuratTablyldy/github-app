@@ -10,7 +10,7 @@
         tools:layout="@layout/list_fragment_layout"/>
 
     <fragment android:id="@+id/detail_fragment"
-        android:name="kz.tabyldy.githubapp.feature.detail.detail.DetailFragment"
+        android:name="kz.tabyldy.githubapp.feature.detail.presentation.DetailFragment"
         tools:layout="@layout/repo_info">
         <argument
             android:name="repo_name"

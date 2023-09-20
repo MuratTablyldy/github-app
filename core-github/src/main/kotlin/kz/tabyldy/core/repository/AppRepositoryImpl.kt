@@ -37,7 +37,6 @@ class AppRepositoryImpl @Inject constructor(
     }
 
     override suspend fun checkToken(): Result<Unit> {
-
         return invoke(Dispatchers.IO) {
             service.checkToken()
         }
@@ -68,5 +67,6 @@ class AppRepositoryImpl @Inject constructor(
     companion object {
         const val PER_PAGE = 10
     }
+
 
 }

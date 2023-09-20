@@ -29,6 +29,3 @@ class CombinedLiveData<T, K, S>(source1: LiveData<T>, source2: LiveData<K>, priv
         throw UnsupportedOperationException()
     }
 }
-fun <T,V,S> mediatorOf(first: LiveData<T>, second:LiveData<V>, onCombine:(T?, V?)->S): CombinedLiveData<T, V, S> {
-    return CombinedLiveData(first,second,onCombine)
-}

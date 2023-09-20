@@ -6,10 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ImageView
-import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
@@ -21,15 +18,15 @@ import kz.tabyldy.core.storage.KeyValueStorage
 import kz.tabyldy.githubapp.databinding.ActivityMainBinding
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
-class MainActivity () : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
 
-    @Inject lateinit var keyValueStorage: KeyValueStorage
+    @Inject
+    lateinit var keyValueStorage: KeyValueStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +37,7 @@ class MainActivity () : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
 
                     val animDrawable = AppCompatResources.getDrawable(
-                        this,
-                        R.drawable.spash_anim
+                        this, R.drawable.spash_anim
                     ) as AnimatedVectorDrawable
                     iconView.setImageDrawable(animDrawable)
                     animDrawable.registerAnimationCallback(object :
@@ -57,8 +53,7 @@ class MainActivity () : AppCompatActivity() {
                 } else {
 
                     val animDrawable = AppCompatResources.getDrawable(
-                        this,
-                        R.drawable.spash_anim
+                        this, R.drawable.spash_anim
                     ) as AnimatedVectorDrawableCompat
                     iconView.setImageDrawable(animDrawable)
                     animDrawable.registerAnimationCallback(object :
@@ -90,10 +85,12 @@ class MainActivity () : AppCompatActivity() {
             true -> {
                 navGraph.setStartDestination(R.id.mainFlowFragment)
             }
+
             else -> {
                 navGraph.setStartDestination(R.id.signFlowFragment)
             }
         }
         navController.graph = navGraph
     }
+
 }
