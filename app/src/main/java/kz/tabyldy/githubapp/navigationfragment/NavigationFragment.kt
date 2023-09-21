@@ -1,18 +1,13 @@
 package kz.tabyldy.githubapp.navigationfragment
 
-import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.vectordrawable.graphics.drawable.Animatable2Compat
-import androidx.vectordrawable.graphics.drawable.Animatable2Compat.AnimationCallback
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kz.tabyldy.core.storage.KeyValueStorage
@@ -23,9 +18,11 @@ import kz.tabyldy.githubapp.navigateSafely
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
+class NavigationFragment: BaseFragment<NavFragmentLayoutBinding>() {
 
     @Inject lateinit var keyValueStorage: KeyValueStorage
+
+    lateinit var navigationListener:NavController.OnDestinationChangedListener
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,9 +46,9 @@ class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        val navigationListener =
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navigationListener =
             NavController.OnDestinationChangedListener { _, destination, arguments ->
                 when(destination.id){
                     R.id.list_repositories_fragment->{
@@ -64,9 +61,20 @@ class NavigationFragment(): BaseFragment<NavFragmentLayoutBinding>() {
                     }
                 }
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding.navHostFragmentMain.findNavController().addOnDestinationChangedListener(navigationListener)
+    }
+
+    override fun onPause() {
+        binding.navHostFragmentMain.findNavController().removeOnDestinationChangedListener(navigationListener)
+        super.onPause()
 
     }
+
+
     private fun animateItem(itemMenu: Int) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
