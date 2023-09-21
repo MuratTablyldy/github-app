@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey">#686B6E</color>
+    <color name="header_row_color">#58A6FF</color>
+    <color name="white">#FEFFFF</color>
+    <color name="grey_bottom">#D7242527</color>
+    <color name="green">#E05A9357</color>
+    <color name="background_alert_dialog">#A40D1117</color>
+</resources>

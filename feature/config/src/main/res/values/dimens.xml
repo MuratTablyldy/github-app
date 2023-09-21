@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_size">130dp</dimen>
+    <dimen name="icon_margin">20dp</dimen>
+    <dimen name="layout_margin_of_button">20dp</dimen>
+</resources>

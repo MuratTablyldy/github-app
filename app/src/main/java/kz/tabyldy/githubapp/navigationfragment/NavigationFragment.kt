@@ -22,7 +22,7 @@ class NavigationFragment: BaseFragment<NavFragmentLayoutBinding>() {
 
     @Inject lateinit var keyValueStorage: KeyValueStorage
 
-    lateinit var navigationListener:NavController.OnDestinationChangedListener
+    private lateinit var navigationListener:NavController.OnDestinationChangedListener
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
