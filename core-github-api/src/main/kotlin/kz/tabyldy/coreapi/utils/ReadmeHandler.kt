@@ -1,7 +1,5 @@
-package kz.tabyldy.core.utils
+package kz.tabyldy.coreapi.utils
 
-import android.content.Context
-import android.content.res.Resources.Theme
 import com.youbenzi.mdtool.tool.MDTool
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,8 +1,8 @@
 package kz.tabyldy.core.api
 
-import kz.tabyldy.core.model.MDRes
-import kz.tabyldy.core.model.Repo
-import kz.tabyldy.core.model.RepoDetail
+import kz.tabyldy.coreapi.model.MDRes
+import kz.tabyldy.coreapi.model.Repo
+import kz.tabyldy.coreapi.model.RepoDetail
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

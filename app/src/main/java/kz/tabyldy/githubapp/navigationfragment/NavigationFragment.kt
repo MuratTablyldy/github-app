@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.coreapi.storage.KeyValueStorage
 import kz.tabyldy.githubapp.R
 import kz.tabyldy.githubapp.activityNavController
 import kz.tabyldy.githubapp.databinding.NavFragmentLayoutBinding

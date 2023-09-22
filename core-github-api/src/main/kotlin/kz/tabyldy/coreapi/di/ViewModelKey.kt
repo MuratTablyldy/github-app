@@ -1,4 +1,4 @@
-package kz.tabyldy.core.di
+package kz.tabyldy.coreapi.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

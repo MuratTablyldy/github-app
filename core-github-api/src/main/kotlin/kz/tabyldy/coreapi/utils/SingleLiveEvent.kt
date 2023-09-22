@@ -1,4 +1,4 @@
-package kz.tabyldy.core.utils
+package kz.tabyldy.coreapi.utils
 
 import android.util.Log
 import androidx.annotation.MainThread

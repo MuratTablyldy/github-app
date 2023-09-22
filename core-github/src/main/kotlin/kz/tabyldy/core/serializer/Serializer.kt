@@ -26,8 +26,8 @@ sealed class Serializer {
     @OptIn(ExperimentalSerializationApi::class)
     fun serializer(type: Type): KSerializer<Any> = format.serializersModule.serializer(type)
 
-    @SuppressWarnings("unchecked")
-    class FromString  constructor(override val format: StringFormat) : Serializer() {
+
+    class FromString  @OptIn(ExperimentalSerializationApi::class) constructor(override val format: StringFormat) : Serializer() {
 
         @OptIn(ExperimentalSerializationApi::class)
         override fun <T> fromResponseBody(

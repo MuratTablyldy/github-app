@@ -1,4 +1,4 @@
-package kz.tabyldy.library.feature.config.login
+package kz.tabyldy.library.feature.config.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,16 +14,13 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kz.tabyldy.library.feature.config.presentation.LoginViewModel
 import javax.inject.Inject
 import dev.icerock.moko.mvvm.livedata.bindTwoWayToEditTextText
 import kz.tabyldy.githubapp.feature.config.R
 import kz.tabyldy.githubapp.feature.config.databinding.LoginLayoutBinding
 import kz.tabyldy.library.feature.config.model.Action
 import kz.tabyldy.library.feature.config.model.State
-
 import kz.tabyldy.library.feature.config.views.ProgressButton
-
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
@@ -47,14 +44,15 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tokenInput.onFocusChangeListener =
+        binding.tokenEdit.onFocusChangeListener =
             OnFocusChangeListener { _, changed ->
                 viewModel.istTokenFieldInputComplete.postValue(
-                    changed
+                    !changed
                 )
             }
 
         binding.singInButton.setOnClickListener {
+
             viewModel.onSignButtonPressed()
         }
         viewModel.apply {

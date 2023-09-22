@@ -3,17 +3,20 @@ package kz.tabyldy.core.repository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kz.tabyldy.core.api.AuthGitHubAPI
-import kz.tabyldy.core.model.Repo
-import kz.tabyldy.core.model.RepoDetail
-
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.coreapi.storage.KeyValueStorage
+import kz.tabyldy.coreapi.model.Repo
+import kz.tabyldy.coreapi.model.RepoDetail
+import kz.tabyldy.coreapi.exceptions.HttpException
 import javax.inject.Inject
-
 
 class AppRepositoryImpl @Inject constructor(
     private val service: AuthGitHubAPI,
     private val keyValueStorage: KeyValueStorage
 ) : AppRepository {
+
+    companion object {
+        const val PER_PAGE = 10
+    }
 
     override var isValid: Boolean?
         get() = keyValueStorage.isValid
@@ -31,9 +34,31 @@ class AppRepositoryImpl @Inject constructor(
         dispatcher: CoroutineDispatcher,
         apiCall: suspend () -> T
     ): Result<T> {
-            return kotlin.runCatching{
-                apiCall.invoke()
+        val result = kotlin.runCatching {
+            apiCall.invoke()
+        }
+        if (result.isSuccess) {
+            return result
+        }
+        return when (val exception = result.exceptionOrNull()) {
+            is retrofit2.HttpException -> {
+                return Result.failure(
+                    HttpException(
+                        exception.message,
+                        exception.code(),
+                        exception)
+                )
             }
+
+            null -> {
+                Result.failure(NullPointerException())
+            }
+
+            else -> {
+                Result.failure(exception)
+            }
+        }
+
     }
 
     override suspend fun checkToken(): Result<Unit> {
@@ -63,10 +88,5 @@ class AppRepositoryImpl @Inject constructor(
             service.getRepoDetails(owner = ownerName, repo = repositoryName)
         }
     }
-
-    companion object {
-        const val PER_PAGE = 10
-    }
-
 
 }

@@ -10,7 +10,8 @@ android{
 }
 
 dependencies {
-    implementation(project(":core-github"))
+    implementation(project(":core-provider"))
+    implementation(project(":shared-libs"))
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
     kapt(libs.metadata)

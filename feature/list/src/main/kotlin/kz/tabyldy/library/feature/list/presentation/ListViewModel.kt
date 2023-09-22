@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kz.tabyldy.core.usecase.GitHubUseCase
+import kz.tabyldy.coreapi.usecase.GitHubUseCase
+import kz.tabyldy.coreapi.exceptions.HttpException
 import kz.tabyldy.library.feature.list.R
 import kz.tabyldy.library.feature.list.model.State
-import retrofit2.HttpException
 import javax.inject.Inject
 
 class ListViewModel @Inject constructor(private val useCase: GitHubUseCase) : ViewModel() {
@@ -36,7 +36,7 @@ class ListViewModel @Inject constructor(private val useCase: GitHubUseCase) : Vi
 
                     is HttpException -> {
 
-                        if (exception.code() == 401) {
+                        if (exception.code == 401) {
                             mutableState.postValue(
                                 State.Error(
                                    R.string.access_error

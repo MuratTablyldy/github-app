@@ -1,8 +1,8 @@
-package kz.tabyldy.core.usecase
+package kz.tabyldy.coreapi.usecase
 
 import kotlinx.coroutines.CoroutineDispatcher
-import kz.tabyldy.core.model.Repo
-import kz.tabyldy.core.model.RepoDetail
+import kz.tabyldy.coreapi.model.Repo
+import kz.tabyldy.coreapi.model.RepoDetail
 
 interface GitHubUseCase {
     suspend fun <T : Any> invoke(

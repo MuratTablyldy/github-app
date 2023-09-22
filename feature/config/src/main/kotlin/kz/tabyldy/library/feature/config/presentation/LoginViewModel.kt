@@ -11,12 +11,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import kz.tabyldy.core.usecase.GitHubUseCase
-import kz.tabyldy.core.utils.SingleLiveEvent
+import kz.tabyldy.coreapi.usecase.GitHubUseCase
+
+import kz.tabyldy.coreapi.exceptions.HttpException
+import kz.tabyldy.coreapi.utils.SingleLiveEvent
 import kz.tabyldy.githubapp.feature.config.R
 import kz.tabyldy.library.feature.config.model.Action
 import kz.tabyldy.library.feature.config.model.State
-import retrofit2.HttpException
 import javax.inject.Inject
 
 
@@ -42,7 +43,6 @@ class LoginViewModel @Inject constructor(
         mediatorOf(tokenField, istTokenFieldInputComplete) { token, isComplete ->
 
             when {
-
                 isComplete && token.isBlank() -> StringResource(R.string.empty_error).desc()
 
                 isComplete && token.contains(invalidCharactersRegex) -> StringResource(R.string.invalid_characters).desc()
@@ -50,11 +50,11 @@ class LoginViewModel @Inject constructor(
                 isComplete && token.length < 10 -> StringResource(R.string.token_is_invalid).desc()
 
                 else -> null
-
             }
         }
 
-    private val actions = flow {
+
+    private val actions = flow{
         mutableState.postValue(State.Loading)
         val result = useCase.checkToken()
         result.onSuccess {
@@ -66,7 +66,7 @@ class LoginViewModel @Inject constructor(
 
                 is HttpException -> {
                     val message =
-                        "${exception.localizedMessage}/${exception.code()}\n ${exception.stackTraceToString()}"
+                        "${exception.localizedMessage}/${exception.code}\n ${exception.stackTraceToString()}"
                     emit(Action.ShowError(message))
                 }
 
@@ -79,9 +79,11 @@ class LoginViewModel @Inject constructor(
         }
     }
     fun onSignButtonPressed() {
+        istTokenFieldInputComplete.postValue(true)
         if(tokenFieldError.value!=null) return
         viewModelScope.launch(Dispatchers.IO) {
             useCase.setApiTToken(tokenField.value)
+
             actions.collect { action ->
                 actionMutableLiveData.postValue(action)
             }

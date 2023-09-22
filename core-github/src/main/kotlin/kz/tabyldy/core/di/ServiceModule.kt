@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import kz.tabyldy.core.repository.AppRepository
 import kz.tabyldy.core.repository.AppRepositoryImpl
 import kz.tabyldy.core.api.AuthGitHubAPI
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.core.storage.KeyValueStorageImpl
 
 @Module(includes = [RetrofitModule::class, KeyValueStorageModule::class])
 @InstallIn(SingletonComponent::class)
@@ -16,9 +16,9 @@ object ServiceModule {
 
     @Provides
     fun getAppRepos(service: AuthGitHubAPI,
-                    keyValueStorage: KeyValueStorage
+                    keyValueStorageImpl: KeyValueStorageImpl
     ): AppRepository {
-        return AppRepositoryImpl(service, keyValueStorage)
+        return AppRepositoryImpl(service, keyValueStorageImpl)
     }
 
 

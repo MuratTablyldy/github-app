@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import kz.tabyldy.core.model.Repo
+import kz.tabyldy.coreapi.model.Repo
 import kz.tabyldy.library.feature.list.databinding.RepositoryRowBinding
 import kz.tabyldy.library.feature.list.utils.Language
 

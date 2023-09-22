@@ -1,4 +1,4 @@
-package kz.tabyldy.core.model
+package kz.tabyldy.coreapi.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

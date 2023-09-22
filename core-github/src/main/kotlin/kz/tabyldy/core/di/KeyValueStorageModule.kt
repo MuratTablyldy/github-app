@@ -2,7 +2,6 @@ package kz.tabyldy.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
-
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.SharedPreferencesSettings
 import dagger.Module
@@ -10,7 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.core.storage.KeyValueStorageImpl
 
 
 
@@ -32,7 +31,7 @@ object KeyValueStorageModule {
     }
     @Provides
     @Singleton
-    fun provideKeyValueStorage(settings: Settings): KeyValueStorage {
-        return KeyValueStorage(settings)
+    fun provideKeyValueStorage(settings: Settings): KeyValueStorageImpl {
+        return KeyValueStorageImpl(settings)
     }
 }

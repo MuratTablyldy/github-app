@@ -9,6 +9,4 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
     val binding: VB get() = _binding!!
 
-
-
 }

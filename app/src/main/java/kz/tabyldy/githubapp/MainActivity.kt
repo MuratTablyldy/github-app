@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.coreapi.storage.KeyValueStorage
 import kz.tabyldy.githubapp.databinding.ActivityMainBinding
 import javax.inject.Inject
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     @Inject
-    lateinit var keyValueStorage: KeyValueStorage
+    lateinit var keyValueStorageImpl: KeyValueStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val navGraph = navController.navInflater.inflate(R.navigation.main_nav_graph)
-        when (keyValueStorage.isValid) {
+        when (keyValueStorageImpl.isValid) {
             true -> {
                 navGraph.setStartDestination(R.id.mainFlowFragment)
             }

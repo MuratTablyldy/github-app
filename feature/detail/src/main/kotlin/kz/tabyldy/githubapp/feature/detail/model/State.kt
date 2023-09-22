@@ -1,7 +1,7 @@
 package kz.tabyldy.githubapp.feature.detail.model
 
 import androidx.annotation.StringRes
-import kz.tabyldy.core.model.RepoDetail
+import kz.tabyldy.coreapi.model.RepoDetail
 
 
 sealed interface State {

@@ -1,8 +1,8 @@
 package kz.tabyldy.core.repository
 
 import kotlinx.coroutines.CoroutineDispatcher
-import kz.tabyldy.core.model.Repo
-import kz.tabyldy.core.model.RepoDetail
+import kz.tabyldy.coreapi.model.Repo
+import kz.tabyldy.coreapi.model.RepoDetail
 
 interface AppRepository {
 

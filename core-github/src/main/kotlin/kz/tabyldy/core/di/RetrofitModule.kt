@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import kz.tabyldy.core.api.AuthGitHubAPI
 import kz.tabyldy.core.interceptors.KeyInterceptor
-import kz.tabyldy.core.storage.KeyValueStorage
+import kz.tabyldy.core.storage.KeyValueStorageImpl
 import kz.tabyldy.core.utils.asConverterFactory
 import okhttp3.ConnectionPool
 import okhttp3.MediaType
@@ -74,8 +74,8 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun getInterceptor(keyValueStorage: KeyValueStorage): KeyInterceptor {
-        return KeyInterceptor(keyValueStorage)
+    fun getInterceptor(keyValueStorageImpl: KeyValueStorageImpl): KeyInterceptor {
+        return KeyInterceptor(keyValueStorageImpl)
     }
 
 }

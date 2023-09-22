@@ -7,12 +7,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kz.tabyldy.core.usecase.GitHubUseCase
-import kz.tabyldy.core.utils.ReadmeHandler
+import kz.tabyldy.coreapi.usecase.GitHubUseCase
+import kz.tabyldy.coreapi.exceptions.HttpException
+import kz.tabyldy.coreapi.utils.ReadmeHandler
 import kz.tabyldy.githubapp.feature.detail.model.ReadmeState
 import kz.tabyldy.githubapp.feature.detail.model.State
 import kz.tabyldy.githubapp.feature.detail.R
-import retrofit2.HttpException
 import javax.inject.Inject
 
 
@@ -37,7 +37,7 @@ class DetailViewModel @Inject constructor(private val useCase: GitHubUseCase) : 
                 }.onFailure { exception ->
                     if (exception is HttpException) {
 
-                        when (exception.code()) {
+                        when (exception.code) {
                             401 -> {
                                 val description = R.string.token_error
                                 mutableState.postValue(State.Error(description))
@@ -92,7 +92,7 @@ class DetailViewModel @Inject constructor(private val useCase: GitHubUseCase) : 
                             }
                         }.onFailure { exception ->
                             if (exception is HttpException) {
-                                when (exception.code()) {
+                                when (exception.code) {
 
                                     401 -> {
                                         val description = R.string.token_error
@@ -175,7 +175,7 @@ class DetailViewModel @Inject constructor(private val useCase: GitHubUseCase) : 
             }.onFailure { exception ->
 
                 if (exception is HttpException) {
-                    when (exception.code()) {
+                    when (exception.code) {
                         401 -> {
                             val description = R.string.token_error
                             mutableState.postValue(
