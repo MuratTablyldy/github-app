@@ -1,5 +1,6 @@
 package kz.tabyldy.library.feature.list.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,7 @@ class ListViewModel @Inject constructor(private val useCase: GitHubUseCase) : Vi
                 }
 
             }.onFailure { exception ->
+
                 when (exception) {
 
                     is HttpException -> {

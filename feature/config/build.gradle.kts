@@ -10,7 +10,7 @@ android{
 }
 
 dependencies {
-    implementation(project(":core-provider"))
+    implementation(project(":core-github:core-provider"))
     implementation(project(":shared-libs"))
     implementation(libs.mokoMvvmLiveData)
     implementation(libs.mokoMvvmCore)

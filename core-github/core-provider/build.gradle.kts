@@ -8,8 +8,8 @@ android{
 }
 
 dependencies{
-    implementation(project(":core-github"))
-    api(project(":core-github-api"))
+    implementation(project(":core-github:core-github-impl"))
+    api(project(":core-github:core-github-api"))
     implementation(libs.hilt)
     kapt (libs.hiltCompiler)
 }

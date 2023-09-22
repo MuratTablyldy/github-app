@@ -20,7 +20,7 @@ dependencies {
     implementation(project(":feature:list"))
     implementation(project(":feature:detail"))
     implementation(project(":shared-libs"))
-    implementation(project(":core-provider"))
+    implementation(project(":core-github:core-provider"))
     implementation(libs.appCompat)
     implementation(libs.splashScreen)
     implementation (libs.hilt)

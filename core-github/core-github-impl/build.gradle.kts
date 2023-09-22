@@ -1,7 +1,6 @@
 plugins{
     id("android-library-convention")
     id("kotlin-kapt")
-    id("org.jetbrains.kotlin.plugin.serialization")
     id("dagger.hilt.android.plugin")
 }
 
@@ -10,7 +9,7 @@ android{
 }
 
 dependencies {
-    implementation(project(":core-github-api"))
+    implementation(project(":core-github:core-github-api"))
     implementation(libs.hilt)
     implementation(libs.retrofit)
     implementation(libs.multiplatformSettings)
