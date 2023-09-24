@@ -7,22 +7,16 @@ import kotlinx.serialization.Serializable
 data class RepoDetail(
     @SerialName("id")
     val id: Long,
-
     @SerialName("license")
     val license: License?,
-
     @SerialName("forks")
     val forks: Int,
-
     @SerialName("stargazers_count")
     val stars: Int,
-
     @SerialName("watchers")
     val watchers: Int,
-
     @SerialName("default_branch")
     val branch: String,
-
     @SerialName("html_url")
     val url: String
 ){

@@ -1,26 +1,26 @@
 package kz.tabyldy.library.feature.list.presentation
 
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kz.tabyldy.library.feature.list.R
 import kz.tabyldy.library.feature.list.adapters.RepositoriesAdapter
 import kz.tabyldy.library.feature.list.databinding.ListFragmentLayoutBinding
 import kz.tabyldy.library.feature.list.model.State
+import kz.tabyldy.library.feature.list.navigation.ListNavigation
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,21 +36,16 @@ class ListFragment: Fragment() {
     private val binding:ListFragmentLayoutBinding
         get() = _binding!!
 
+    private val navigation: ListNavigation by lazy {
+        XInjectionManager.findComponent()
+    }
+
     private val adapter: RepositoriesAdapter by lazy {
         RepositoriesAdapter { repository ->
             val owner = repository.owner!!.login
             val repoName = repository.name
             val id = repository.id
-            val navOptions = NavOptions.Builder()
-                .setEnterAnim(androidx.transition.R.anim.abc_slide_in_bottom)
-                .setExitAnim(androidx.transition.R.anim.abc_slide_out_top)
-                .setPopEnterAnim(androidx.transition.R.anim.abc_slide_in_top)
-                .setPopExitAnim(androidx.transition.R.anim.abc_slide_out_bottom)
-                .build()
-            val request = NavDeepLinkRequest.Builder
-                .fromUri("app://gitHub.app/details/$repoName/$owner/$id".toUri())
-                .build()
-            findNavController().navigate(request,navOptions)
+            navigation.navigateToDetailFragment(id,repoName,owner)
         }
     }
 
@@ -66,9 +61,23 @@ class ListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.repoRecyclerView.adapter = adapter
+
         if(savedInstanceState==null){
             viewModel.onCreated()
         }
+
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+
+            if (menuItem.itemId == R.id.exit) {
+                animateItem(R.id.exit)
+                navigation.logoutFromListNavigation()
+                true
+            } else {
+                false
+            }
+        }
+
+        binding.toolbar.title=resources.getString(R.string.repositories)
 
         bind()
     }
@@ -129,6 +138,19 @@ class ListFragment: Fragment() {
         }
 
     }
+
+    private fun animateItem(itemMenu: Int) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawable
+            icon.start()
+        } else {
+            val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawableCompat
+            icon.start()
+        }
+
+    }
+
     private fun showLoadingView() {
         binding.loadingView
         binding.loadingView.root.visibility = View.VISIBLE

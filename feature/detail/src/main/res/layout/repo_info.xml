@@ -1,149 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/coordinator"
     android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Base_ToolbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_main" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-              <com.google.android.material.appbar.CollapsingToolbarLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
-                      <androidx.appcompat.widget.LinearLayoutCompat
-                          android:id="@+id/state_view"
-                          android:layout_width="match_parent"
-                          app:layout_collapseMode="pin"
-                          android:background="@color/background"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical">
 
-                      <LinearLayout
-                          app:layout_collapseMode="pin"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_gravity="start|center_vertical"
-                          android:orientation="horizontal">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                              <ImageView
-                                  android:id="@+id/url_icon"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_margin="5dp"
-                                  android:src="@drawable/ic_baseline_link_24"
-                                  app:layout_constraintBottom_toBottomOf="@id/link"
-                                  app:layout_constraintEnd_toStartOf="@id/link"
-                                  app:layout_constraintStart_toStartOf="parent"
-                                  app:layout_constraintTop_toTopOf="@id/link"
-                                  app:tint="@color/header_row_color" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                              <TextView
-                                  android:id="@+id/link"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="match_parent"
-                                  android:layout_gravity="center"
-                                  android:layout_margin="5dp"
-                                  android:textColor="@color/header_row_color"
-                                  app:layout_constraintEnd_toEndOf="parent"
-                                  app:layout_constraintStart_toEndOf="@id/url_icon"
-                                  app:layout_constraintTop_toTopOf="parent"
-                                  tools:text="https://github.com/icerockdev/moko-resources" />
-                      </LinearLayout>
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
-                      <LinearLayout
-                          app:layout_collapseMode="pin"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/state_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background"
+                    android:orientation="vertical"
+                    app:layout_collapseMode="pin">
 
-                              <ImageView
-                                  android:id="@+id/license_logo"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_margin="5dp"
-                                  android:src="@drawable/ic_license"
-                                  app:tint="@color/white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_collapseMode="pin">
 
-                              <TextView
-                                  android:id="@+id/license_text"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_gravity="center"
-                                  android:layout_margin="5dp"
-                                  android:text="@string/license"
-                                  android:textColor="@color/white"
-                                  android:textSize="16sp" />
+                        <ImageView
+                            android:id="@+id/url_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/ic_baseline_link_24"
+                            app:layout_constraintBottom_toBottomOf="@id/link"
+                            app:layout_constraintEnd_toStartOf="@id/link"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/link"
+                            app:tint="@color/header_row_color" />
 
-                              <LinearLayout
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:gravity="end">
+                        <TextView
+                            android:id="@+id/link"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:textColor="@color/header_row_color"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/url_icon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="https://github.com/icerockdev/moko-resources" />
+                    </LinearLayout>
 
-                                      <TextView
-                                          android:id="@+id/license"
-                                          android:layout_width="wrap_content"
-                                          android:layout_height="wrap_content"
-                                          android:layout_gravity="center"
-                                          android:layout_margin="5dp"
-                                          android:textColor="@color/white"
-                                          android:textSize="16sp"
-                                          tools:text="Apache 2.0" />
-                              </LinearLayout>
-                      </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_collapseMode="pin">
 
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:gravity="center"
-                          app:layout_collapseMode="pin"
-                          android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/license_logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:src="@drawable/ic_license"
+                            app:tint="@color/white" />
 
-                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
-                                  android:id="@+id/stars_id"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_marginTop="10dp"
-                                  android:layout_marginEnd="10dp"
-                                  android:layout_marginBottom="10dp"
-                                  app:description="@string/stars_title"
-                                  app:layout_constraintEnd_toStartOf="@id/forks"
-                                  app:layout_constraintStart_toStartOf="parent"
-                                  app:layout_constraintTop_toBottomOf="@id/license_text"
-                                  app:logo="@drawable/ic_baseline_star_24"
-                                  app:logoColor="@color/yellow" />
+                        <TextView
+                            android:id="@+id/license_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="@string/license"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
-                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
-                                  android:id="@+id/forks"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_margin="10dp"
-                                  app:description="@string/forks_title"
-                                  app:layout_constraintEnd_toStartOf="@id/watches"
-                                  app:layout_constraintStart_toEndOf="@id/stars_id"
-                                  app:layout_constraintTop_toBottomOf="@id/license_text"
-                                  app:logo="@drawable/ic_forks"
-                                  app:logoColor="@color/forks_color" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end">
 
-                              <kz.tabyldy.githubapp.feature.detail.utils.CounterView
-                                  android:id="@+id/watches"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_marginStart="10dp"
-                                  android:layout_marginTop="10dp"
-                                  android:layout_marginBottom="10dp"
-                                  app:description="@string/views"
-                                  app:layout_constraintEnd_toEndOf="parent"
-                                  app:layout_constraintStart_toEndOf="@id/forks"
-                                  app:layout_constraintTop_toBottomOf="@id/license_text"
-                                  app:logo="@drawable/ic_views"
-                                  app:logoColor="@color/light_blue" />
-                      </LinearLayout>
-                      </androidx.appcompat.widget.LinearLayoutCompat>
-              </com.google.android.material.appbar.CollapsingToolbarLayout>
+                            <TextView
+                                android:id="@+id/license"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                tools:text="Apache 2.0" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_collapseMode="pin">
+
+                        <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                            android:id="@+id/stars_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:description="@string/stars_title"
+                            app:layout_constraintEnd_toStartOf="@id/forks"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/license_text"
+                            app:logo="@drawable/ic_baseline_star_24"
+                            app:logoColor="@color/yellow" />
+
+                        <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                            android:id="@+id/forks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            app:description="@string/forks_title"
+                            app:layout_constraintEnd_toStartOf="@id/watches"
+                            app:layout_constraintStart_toEndOf="@id/stars_id"
+                            app:layout_constraintTop_toBottomOf="@id/license_text"
+                            app:logo="@drawable/ic_forks"
+                            app:logoColor="@color/forks_color" />
+
+                        <kz.tabyldy.githubapp.feature.detail.utils.CounterView
+                            android:id="@+id/watches"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:description="@string/views"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/forks"
+                            app:layout_constraintTop_toBottomOf="@id/license_text"
+                            app:logo="@drawable/ic_views"
+                            app:logoColor="@color/light_blue" />
+                    </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -151,44 +175,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                        <WebView
-                            android:id="@+id/readme_holder"
-                            android:layout_width="match_parent"
-                            android:isScrollContainer="false"
-                            android:layout_height="match_parent"/>
 
-                        <include
-                            android:id="@+id/readme_empty"
-                            layout="@layout/readme_empty_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
-                        <include
-                            android:id="@+id/readme_loading"
-                            layout="@layout/readme_loading_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
-                        <include
-                            android:id="@+id/readme_error"
-                            layout="@layout/readme_error_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:visibility="gone"/>
-                </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <WebView
+                    android:id="@+id/readme_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:isScrollContainer="false" />
+
+                <include
+                    android:id="@+id/readme_empty"
+                    layout="@layout/readme_empty_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/readme_loading"
+                    layout="@layout/readme_loading_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/readme_error"
+                    layout="@layout/readme_error_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+            </FrameLayout>
         </androidx.core.widget.NestedScrollView>
 
 
         <include
             android:id="@+id/loading_view"
             layout="@layout/detail_loading_layout"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <include
             android:id="@+id/error_view"
             layout="@layout/detail_error_layout"
             android:visibility="gone" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

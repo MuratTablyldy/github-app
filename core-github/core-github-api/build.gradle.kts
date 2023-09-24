@@ -11,5 +11,5 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.hilt)
     implementation(libs.mdTool)
-    api(libs.kotlinSerialization)
+    implementation(libs.kotlinSerialization)
 }

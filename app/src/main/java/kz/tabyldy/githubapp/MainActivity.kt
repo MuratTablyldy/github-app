@@ -16,6 +16,8 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kz.tabyldy.coreapi.storage.KeyValueStorage
 import kz.tabyldy.githubapp.databinding.ActivityMainBinding
+import kz.tabyldy.githubapp.navigation.Navigator
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,7 +28,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     @Inject
-    lateinit var keyValueStorageImpl: KeyValueStorage
+    lateinit var keyValueStorage: KeyValueStorage
+
+    private val navigator: Navigator by lazy {
+        XInjectionManager.findComponent()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,16 +80,32 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
     }
 
+    override fun onResume() {
+        super.onResume()
+        navigator.bind(
+            navController = navController,
+            onLogOut = {
+                keyValueStorage.isValid = false
+            }
+        )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigator.unbind()
+    }
+
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp()
+
     private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-
         val navGraph = navController.navInflater.inflate(R.navigation.main_nav_graph)
-        when (keyValueStorageImpl.isValid) {
+        when (keyValueStorage.isValid) {
             true -> {
-                navGraph.setStartDestination(R.id.mainFlowFragment)
+                navGraph.setStartDestination(R.id.list_repositories_fragment)
             }
 
             else -> {

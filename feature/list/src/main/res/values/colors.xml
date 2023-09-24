@@ -11,4 +11,5 @@
     <color name="python_color">#45F4EC</color>
     <color name="other_color">#3F41F4</color>
     <color name="divider_color">#21262D</color>
+    <color name="toolbar_color">#161B22</color>
 </resources>

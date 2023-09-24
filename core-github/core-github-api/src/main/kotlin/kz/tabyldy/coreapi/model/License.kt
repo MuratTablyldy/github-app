@@ -5,10 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class License(
-
     @SerialName("key")
     val key: String,
-
     @SerialName("name")
     val name: String
 )

@@ -6,13 +6,9 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import dev.icerock.moko.mvvm.livedata.bindTwoWayToEditTextText
@@ -20,7 +16,10 @@ import kz.tabyldy.githubapp.feature.config.R
 import kz.tabyldy.githubapp.feature.config.databinding.LoginLayoutBinding
 import kz.tabyldy.library.feature.config.model.Action
 import kz.tabyldy.library.feature.config.model.State
+import kz.tabyldy.library.feature.config.navigation.LoginNavigation
 import kz.tabyldy.library.feature.config.views.ProgressButton
+import me.vponomarenko.injectionmanager.x.XInjectionManager
+
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
@@ -32,6 +31,10 @@ class LoginFragment : Fragment() {
     private var _binding: LoginLayoutBinding? = null
     private val binding: LoginLayoutBinding
         get() = _binding!!
+
+    private val navigation: LoginNavigation by lazy {
+        XInjectionManager.findComponent()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -91,13 +94,7 @@ class LoginFragment : Fragment() {
                     }
 
                     is Action.RouteToMain -> {
-                        val navOptions = NavOptions.Builder()
-                            .setEnterAnim(R.anim.from_left)
-                            .setExitAnim(R.anim.to_right).build()
-                        val request = NavDeepLinkRequest.Builder
-                            .fromUri("app://gitHub.app/main_graph".toUri())
-                            .build()
-                        findNavController().navigate(request, navOptions)
+                        navigation.navigateToMain()
                     }
                 }
             }

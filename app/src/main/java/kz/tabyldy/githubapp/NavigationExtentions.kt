@@ -1,5 +1,6 @@
 package kz.tabyldy.githubapp
 
+import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -9,5 +10,8 @@ fun Fragment.activityNavController() = requireActivity().findNavController(R.id.
 
 fun NavController.navigateSafely(@IdRes actionId: Int) {
     currentDestination?.getAction(actionId)?.let { navigate(actionId) }
+}
 
+fun NavController.navigateSafely( @IdRes actionId: Int,bundle: Bundle){
+    currentDestination?.getAction(actionId)?.let { navigate(actionId,bundle) }
 }

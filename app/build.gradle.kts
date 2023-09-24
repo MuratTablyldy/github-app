@@ -25,6 +25,7 @@ dependencies {
     implementation(libs.splashScreen)
     implementation (libs.hilt)
     kapt (libs.hiltCompiler)
+    implementation(libs.xComponent)
 
 }
 

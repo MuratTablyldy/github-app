@@ -8,4 +8,6 @@
     <string name="no_repositories_at_the_moment">No repositories at the moment</string>
     <string name="error_title">Error</string>
     <string name="token_is_invalid">invalid token</string>
+    <string name="repositories">REPOSITORIES</string>
+    <string name="exit">exit</string>
 </resources>

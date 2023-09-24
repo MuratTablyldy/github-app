@@ -2,30 +2,52 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_nav_graph">
+    android:id="@+id/main_nav_grapht">
     <action
         android:id="@+id/action_global_signFlowFragment"
         app:destination="@id/signFlowFragment"
         app:enterAnim="@anim/slide_right_in"
         app:exitAnim="@anim/slide_left_out"
-        app:popUpTo="@id/main_nav_graph" />
+        app:popUpTo="@id/main_nav_grapht" />
 
     <action
         android:id="@+id/action_global_mainFlowFragment"
-        app:destination="@id/mainFlowFragment"
-        app:popUpTo="@id/main_nav_graph" />
-
-    <fragment
-        android:id="@+id/mainFlowFragment"
-        android:name="kz.tabyldy.githubapp.navigationfragment.NavigationFragment"
-        android:label="flow_fragment_main"
-        tools:layout="@layout/nav_fragment_layout">
-        <deepLink app:uri="app://gitHub.app/main_graph"/>
-    </fragment>
+        app:destination="@id/list_repositories_fragment"
+        app:enterAnim="@anim/from_left"
+        app:exitAnim="@anim/to_right"
+        app:popUpTo="@id/main_nav_grapht" />
 
     <fragment
         android:id="@+id/signFlowFragment"
         android:name="kz.tabyldy.library.feature.config.presentation.LoginFragment"
         android:label="flow_fragment_sign"
         tools:layout="@layout/login_layout"/>
+
+    <fragment
+        android:id="@+id/list_repositories_fragment"
+        android:name="kz.tabyldy.library.feature.list.presentation.ListFragment"
+        tools:layout="@layout/list_fragment_layout">
+
+        <action
+            android:id="@+id/action_list_repositories_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom"/>
+    </fragment>
+
+    <fragment android:id="@+id/detail_fragment"
+        android:name="kz.tabyldy.githubapp.feature.detail.presentation.DetailFragment"
+        tools:layout="@layout/repo_info">
+        <argument
+            android:name="repo_name"
+            app:argType="string"/>
+        <argument
+            android:name="owner"
+            app:argType="string" />
+        <argument android:name="id" app:argType="long"/>
+        <deepLink app:uri="app://github.app/details/{repo_name}/{owner}/{id}"/>
+    </fragment>
+
 </navigation>

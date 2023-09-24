@@ -12,4 +12,5 @@ dependencies{
     api(libs.navigationUI)
     api(libs.corektx)
     api(libs.fragment)
+    api(libs.xComponent)
 }

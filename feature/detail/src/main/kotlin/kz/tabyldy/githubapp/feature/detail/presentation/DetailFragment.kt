@@ -1,5 +1,7 @@
 package kz.tabyldy.githubapp.feature.detail.presentation
 
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
@@ -15,16 +17,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kz.tabyldy.githubapp.feature.detail.R
 import kz.tabyldy.githubapp.feature.detail.databinding.RepoInfoBinding
 import kz.tabyldy.githubapp.feature.detail.model.ReadmeState
 import kz.tabyldy.githubapp.feature.detail.model.State
+import kz.tabyldy.githubapp.feature.detail.navigation.DetailNavigation
+import me.vponomarenko.injectionmanager.x.XInjectionManager
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
+
+    companion object {
+        const val OWNER = "owner"
+        const val REPOSITORY_NAME = "repo_name"
+        const val article_position = "ARTICLE_SCROLL_POSITION"
+        const val ID = "id"
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -44,7 +56,9 @@ class DetailFragment : Fragment() {
 
     private lateinit var owner: String
 
-
+    private val navigation: DetailNavigation by lazy {
+        XInjectionManager.findComponent()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -57,7 +71,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         owner = requireArguments().getString(OWNER)!!
         repositoryName = requireArguments().getString(REPOSITORY_NAME)!!
-        id = requireArguments().getLong("id")
+        id = requireArguments().getLong(ID)
         if (savedInstanceState == null) {
             viewModel.loadDetailInfo(owner, repositoryName, id = id)
         } else {
@@ -70,6 +84,20 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            if (menuItem.itemId == R.id.exit) {
+                animateItem(R.id.exit)
+                navigation.logoutFromDetailFragment()
+                true
+            } else {
+                false
+            }
+        }
+        binding.toolbar.setNavigationIcon(R.drawable.ic_back)
+        binding.toolbar.setNavigationOnClickListener {
+           navigation.backToListFFragment()
+        }
+        binding.toolbar.title=repositoryName
         bind()
     }
 
@@ -223,10 +251,17 @@ class DetailFragment : Fragment() {
 
         binding.readmeHolder.visibility = View.VISIBLE
     }
-    companion object {
-        const val OWNER = "owner"
-        const val REPOSITORY_NAME = "repo_name"
-        const val article_position = "ARTICLE_SCROLL_POSITION"
+
+    private fun animateItem(itemMenu: Int) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+            val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawable
+            icon.start()
+        } else {
+            val icon = binding.toolbar.menu.findItem(itemMenu).icon as AnimatedVectorDrawableCompat
+            icon.start()
+        }
+
     }
 
 }

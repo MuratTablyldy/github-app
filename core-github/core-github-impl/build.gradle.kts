@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.multiplatformSettings)
     implementation(libs.okHttpInteceptor)
+    implementation(libs.kotlinSerialization)
     kapt (libs.hiltCompiler)
 }
 
